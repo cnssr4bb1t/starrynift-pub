@@ -76,6 +76,7 @@ python3 auto_battle.py -u Kylin -n 3
 # 默认账户account_1对战，出战人数4，默认穿装备
 python3 auto_battle.py -n 4
 ```
+![image](https://user-images.githubusercontent.com/5326766/149612989-688abc78-afa2-442c-bd2b-09135b7eab27.png)
 
 
 ### Windows
