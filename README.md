@@ -79,7 +79,7 @@ python3 auto_battle.py -n 4
 ![image](https://user-images.githubusercontent.com/5326766/149612989-688abc78-afa2-442c-bd2b-09135b7eab27.png)
 
 
-## Windows
+## Windows10 / 11（Windows7不支持）
 使用编译打包好的 exe程序，看这里下载 https://github.com/cnssr4bb1t/starrynift-pub/releases
 下载 [starrynift_auto_battle_v1.0.zip](https://github.com/cnssr4bb1t/starrynift-pub/releases/download/win/starrynift_auto_battle_v1.0.zip)，解压
 #### 配置钱包
