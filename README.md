@@ -80,9 +80,10 @@ python3 auto_battle.py -n 4
 
 
 ## Windows
-使用编译打包好的 exe程序
+使用编译打包好的 exe程序，看这里下载 https://github.com/cnssr4bb1t/starrynift-pub/releases
+下载 [starrynift_auto_battle_v1.0.zip](https://github.com/cnssr4bb1t/starrynift-pub/releases/download/win/starrynift_auto_battle_v1.0.zip)，解压
 #### 配置钱包
-在`auto_battle.exe`程序相同目录下创建`account.txt`，里面内容为：
+在`auto_battle.exe`程序相同目录下创建`account.txt` (现在压缩包里面自带了一个account.txt，直接改就行了)，里面内容为：
 ```
 地址----私钥
 ```
