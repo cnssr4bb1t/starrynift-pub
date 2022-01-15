@@ -92,3 +92,4 @@ python3 auto_battle.py -n 4
 ```
 如果有多个账号，可以写多行，程序执行的时候会按照顺序去尝试对战。
 然后双击 `auto_battle.exe` 运行，简单输入参数之后，就可以去做别的事情了：）
+![image](https://user-images.githubusercontent.com/5326766/149615304-2b91e4a1-2b21-42a4-935a-33ad1bf23ae2.png)
