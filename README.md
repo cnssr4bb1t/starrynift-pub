@@ -81,6 +81,9 @@ python3 auto_battle.py -n 4
 
 
 ## Windows10 / 11（Windows7不支持）
+> exe 根据 auto_battle_for_windows.py 用 pyinstaller 打包的，同样开源。
+如果你在windows下会用脚本，那可以直接跑py文件，不用exe。
+
 使用编译打包好的 exe程序，看这里下载 https://github.com/cnssr4bb1t/starrynift-pub/releases
 下载 [starrynift_auto_battle_v1.0.zip](https://github.com/cnssr4bb1t/starrynift-pub/releases/download/win/starrynift_auto_battle_v1.0.zip)，解压
 #### 配置钱包
