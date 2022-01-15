@@ -6,12 +6,12 @@ StarryNift 自动对战刷经验辅助工具，解放你的时间。
 
 >Ps: StarryNift元宇宙游戏仍处于相当早期阶段，多点耐心。
 
-### 需要注意的事情
+#### 需要注意的事情
 1. 假如你出战的人数为N，需要你的装备整体套数至少能凑出来N套，否则请通过参数取消使用装备，比如你只有2个法器，但是选择了3个人出战并且需要穿装备，则会报错，**我不是很想改这个逻辑**，请手动改出战人数或者不使用装备。
 2. 至于安全性问题，没必要解释，这个脚本很简单，不收钱，开源，安全问题自己看代码。
 
 
-### Mac / Linux
+## Mac / Linux
 #### 文档结构
 ```
 $ tree starrynift-pub
@@ -79,7 +79,7 @@ python3 auto_battle.py -n 4
 ![image](https://user-images.githubusercontent.com/5326766/149612989-688abc78-afa2-442c-bd2b-09135b7eab27.png)
 
 
-### Windows
+## Windows
 使用编译打包好的 exe程序
 #### 配置钱包
 在`auto_battle.exe`程序相同目录下创建`account.txt`，里面内容为：
