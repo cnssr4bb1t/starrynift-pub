@@ -3,6 +3,7 @@
 
 StarryNift 自动对战刷经验辅助工具，解放你的时间。
 >@author: 19 From STARS GUILD 繁星公会
+
 >Ps: StarryNift元宇宙游戏仍处于相当早期阶段，多点耐心。
 
 ### 需要注意的事情
@@ -12,13 +13,15 @@ StarryNift 自动对战刷经验辅助工具，解放你的时间。
 
 ### Mac / Linux
 #### 文档结构
-> $ tree starrynift-pub
+```
+$ tree starrynift-pub
 starrynift-pub
 ├── LICENSE
 ├── README.md
 ├── auto_battle.py
 ├── config.py
 └── starry_util.py
+```
 
 需要 Python 3.6 以上，并pip安装相关依赖包，现阶段可能需要的有：
 ```
