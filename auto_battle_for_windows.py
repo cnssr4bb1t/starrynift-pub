@@ -239,6 +239,7 @@ if __name__ == '__main__':
     if battle_count not in [1, 2, 3, 4]:
         exit()
     is_wear = input("是否穿戴装备(0不穿，其他穿): ")
+    is_unlimit = input("没有卡之后是否循环等待新的卡尝试对战(0不循环，其他循环): ")
     with open("./account.txt") as f:
         content = f.readlines()
     accounts = []
@@ -300,7 +301,13 @@ if __name__ == '__main__':
                           f"数据：Win: {win}  Lose: {lose}  Rate:{round(win / (win + lose), 3) * 100}%"
                     print(msg)
                     time.sleep(60)
-                break
+                if is_unlimit != '0':
+                    print(
+                        f"{Fore.YELLOW}[-] {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Sleep 10 minutes and wait new nfts.")
+                    time.sleep(600)  # 没有卡了之后，暂停10分钟，再看
+                    continue
+                else:
+                    break
             print(
                 f"{Fore.YELLOW}[-] {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} One team battle done. Have a rest for 10 seconds.")
             time.sleep(12)
