@@ -104,3 +104,4 @@ python3 auto_battle.py -n 4
 > 出现解决不了的闪退问题的话，拍视频，找到闪退报错的那一帧，截图微信发给我看看。
 
 1. 如果出现`Caused by HTTPSConnectionPool(host='app.starrynift.art', port=443): Max retries exceeded with url: /api/user/challenge (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))).` 这种错误提示，大概率是网络问题，检查一下你是不是开了全局代理，关掉它。
+2. 可能导致闪退的问题：`account.txt`文件内容没有写对
