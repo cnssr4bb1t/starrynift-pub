@@ -99,3 +99,8 @@ python3 auto_battle.py -n 4
 如果有多个账号，可以写多行，程序执行的时候会按照顺序去尝试对战。
 然后双击 `auto_battle.exe` 运行，简单输入参数之后，就可以去做别的事情了：）
 ![image](https://user-images.githubusercontent.com/5326766/149615304-2b91e4a1-2b21-42a4-935a-33ad1bf23ae2.png)
+
+#### 常见问题
+> 出现解决不了的闪退问题的话，拍视频，找到闪退报错的那一帧，截图微信发给我看看。
+
+1. 如果出现`Caused by HTTPSConnectionPool(host='app.starrynift.art', port=443): Max retries exceeded with url: /api/user/challenge (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)'))).` 这种错误提示，大概率是网络问题，检查一下你是不是开了全局代理，关掉它。
