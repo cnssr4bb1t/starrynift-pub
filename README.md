@@ -5,6 +5,7 @@ StarryNift 自动对战刷经验辅助工具，解放你的时间。
 >@author: 19 From STARS GUILD 繁星公会
 
 >Ps: StarryNift元宇宙游戏仍处于相当早期阶段，多点耐心。
+
 >**自动占地脚本，联系wx: kylin_turing**
 
 #### 需要注意的事情
