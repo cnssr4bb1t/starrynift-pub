@@ -81,6 +81,7 @@ python3 auto_battle.py -u Kylin -n 3
 # 默认账户account_1对战，出战人数4，默认穿装备
 python3 auto_battle.py -n 4
 ```
+> 如果你要持续循环对战，类似windows版本的第三个参数，使用`crontab`做定时任务就可以了。
 ![image](https://user-images.githubusercontent.com/5326766/149612989-688abc78-afa2-442c-bd2b-09135b7eab27.png)
 
 
