@@ -26,7 +26,11 @@ def battle_prepare():
     for item in res['items']:
         if item['identity']['source'] == 2:   # 装备卡
             # 0质量，1装备id，2名称，3数量，4部位
-            info = [item['quality'], item['identity']['id'], item['name'], item['amount'], item['category']]
+            info = [item['quality']+0.1, item['identity']['id'], item['name'], item['amount'], item['category']]
+            items.append(info)
+        elif item['identity']['source'] == 3:   # 装备卡
+            # 0质量，1装备id，2名称，3数量，4部位
+            info = [item['quality']+0.2, item['identity']['id'], item['name'], item['amount'], item['category']]
             items.append(info)
         else:
             pass
@@ -42,32 +46,32 @@ def battle_prepare():
         if item[4] == 1:
             if len(items1) < 4:
                 for i in range(item[3]):
-                    items1.append(item[1])
+                    items1.append([item[1], item[0]])
                 items1 = items1[:4]     # 取前四个
         elif item[4] == 2:
             if len(items2) < 4:
                 for i in range(item[3]):
-                    items2.append(item[1])
+                    items2.append([item[1], item[0]])
                 items2 = items2[:4]     # 取前四个
         elif item[4] == 3:
             if len(items3) < 4:
                 for i in range(item[3]):
-                    items3.append(item[1])
+                    items3.append([item[1], item[0]])
                 items3 = items3[:4]     # 取前四个
         elif item[4] == 4:
             if len(items4) < 4:
                 for i in range(item[3]):
-                    items4.append(item[1])
+                    items4.append([item[1], item[0]])
                 items4 = items4[:4]     # 取前四个
         elif item[4] == 5:
             if len(items5) < 4:
                 for i in range(item[3]):
-                    items5.append(item[1])
+                    items5.append([item[1], item[0]])
                 items5 = items5[:4]     # 取前四个
         elif item[4] == 6:
             if len(items6) < 4:
                 for i in range(item[3]):
-                    items6.append(item[1])
+                    items6.append([item[1], item[0]])
                 items6 = items6[:4]     # 取前四个
         else:
             pass
@@ -91,33 +95,33 @@ def battle_create(avatars_battle, items_battle, times):
                 },
                 "items": [
                     {
-                        "source": 2,
-                        "id": str(items_battle[0][i]),
+                        "source": 2 if str(items_battle[0][i][1]).split(".")[1] == '1' else 3,
+                        "id": str(items_battle[0][i][0]),
                         "category": 1
                     },
                     {
-                        "source": 2,
-                        "id": str(items_battle[1][i]),
+                        "source": 2 if str(items_battle[1][i][1]).split(".")[1] == '1' else 3,
+                        "id": str(items_battle[1][i][0]),
                         "category": 2
                     },
                     {
-                        "source": 2,
-                        "id": str(items_battle[2][i]),
+                        "source": 2 if str(items_battle[2][i][1]).split(".")[1] == '1' else 3,
+                        "id": str(items_battle[2][i][0]),
                         "category": 3
                     },
                     {
-                        "source": 2,
-                        "id": str(items_battle[3][i]),
+                        "source": 2 if str(items_battle[3][i][1]).split(".")[1] == '1' else 3,
+                        "id": str(items_battle[3][i][0]),
                         "category": 4
                     },
                     {
-                        "source": 2,
-                        "id": str(items_battle[4][i]),
+                        "source": 2 if str(items_battle[4][i][1]).split(".")[1] == '1' else 3,
+                        "id": str(items_battle[4][i][0]),
                         "category": 5
                     },
                     {
-                        "source": 2,
-                        "id": str(items_battle[5][i]),
+                        "source": 2 if str(items_battle[5][i][1]).split(".")[1] == '1' else 3,
+                        "id": str(items_battle[5][i][0]),
                         "category": 6
                     },
                 ]

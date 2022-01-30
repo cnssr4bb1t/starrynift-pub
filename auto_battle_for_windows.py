@@ -83,9 +83,13 @@ def battle_prepare():
                     avatar['quota'][0]]
             avatars.append(info)
     for item in res['items']:
-        if item['identity']['source'] == 2:  # 装备卡
+        if item['identity']['source'] == 2:   # 装备卡
             # 0质量，1装备id，2名称，3数量，4部位
-            info = [item['quality'], item['identity']['id'], item['name'], item['amount'], item['category']]
+            info = [item['quality']+0.1, item['identity']['id'], item['name'], item['amount'], item['category']]
+            items.append(info)
+        elif item['identity']['source'] == 3:   # 装备卡
+            # 0质量，1装备id，2名称，3数量，4部位
+            info = [item['quality']+0.2, item['identity']['id'], item['name'], item['amount'], item['category']]
             items.append(info)
         else:
             pass
@@ -101,33 +105,33 @@ def battle_prepare():
         if item[4] == 1:
             if len(items1) < 4:
                 for i in range(item[3]):
-                    items1.append(item[1])
-                items1 = items1[:4]  # 取前四个
+                    items1.append([item[1], item[0]])
+                items1 = items1[:4]     # 取前四个
         elif item[4] == 2:
             if len(items2) < 4:
                 for i in range(item[3]):
-                    items2.append(item[1])
-                items2 = items2[:4]  # 取前四个
+                    items2.append([item[1], item[0]])
+                items2 = items2[:4]     # 取前四个
         elif item[4] == 3:
             if len(items3) < 4:
                 for i in range(item[3]):
-                    items3.append(item[1])
-                items3 = items3[:4]  # 取前四个
+                    items3.append([item[1], item[0]])
+                items3 = items3[:4]     # 取前四个
         elif item[4] == 4:
             if len(items4) < 4:
                 for i in range(item[3]):
-                    items4.append(item[1])
-                items4 = items4[:4]  # 取前四个
+                    items4.append([item[1], item[0]])
+                items4 = items4[:4]     # 取前四个
         elif item[4] == 5:
             if len(items5) < 4:
                 for i in range(item[3]):
-                    items5.append(item[1])
-                items5 = items5[:4]  # 取前四个
+                    items5.append([item[1], item[0]])
+                items5 = items5[:4]     # 取前四个
         elif item[4] == 6:
             if len(items6) < 4:
                 for i in range(item[3]):
-                    items6.append(item[1])
-                items6 = items6[:4]  # 取前四个
+                    items6.append([item[1], item[0]])
+                items6 = items6[:4]     # 取前四个
         else:
             pass
     prepared_items = [items1, items2, items3, items4, items5, items6]
@@ -150,33 +154,33 @@ def battle_create(avatars_battle, items_battle, times):
                 },
                 "items": [
                     {
-                        "source": 2,
-                        "id": str(items_battle[0][i]),
+                        "source": 2 if str(items_battle[0][i][1]).split(".")[1] == '1' else 3,
+                        "id": str(items_battle[0][i][0]),
                         "category": 1
                     },
                     {
-                        "source": 2,
-                        "id": str(items_battle[1][i]),
+                        "source": 2 if str(items_battle[1][i][1]).split(".")[1] == '1' else 3,
+                        "id": str(items_battle[1][i][0]),
                         "category": 2
                     },
                     {
-                        "source": 2,
-                        "id": str(items_battle[2][i]),
+                        "source": 2 if str(items_battle[2][i][1]).split(".")[1] == '1' else 3,
+                        "id": str(items_battle[2][i][0]),
                         "category": 3
                     },
                     {
-                        "source": 2,
-                        "id": str(items_battle[3][i]),
+                        "source": 2 if str(items_battle[3][i][1]).split(".")[1] == '1' else 3,
+                        "id": str(items_battle[3][i][0]),
                         "category": 4
                     },
                     {
-                        "source": 2,
-                        "id": str(items_battle[4][i]),
+                        "source": 2 if str(items_battle[4][i][1]).split(".")[1] == '1' else 3,
+                        "id": str(items_battle[4][i][0]),
                         "category": 5
                     },
                     {
-                        "source": 2,
-                        "id": str(items_battle[5][i]),
+                        "source": 2 if str(items_battle[5][i][1]).split(".")[1] == '1' else 3,
+                        "id": str(items_battle[5][i][0]),
                         "category": 6
                     },
                 ]
@@ -227,19 +231,19 @@ def battle_create(avatars_battle, items_battle, times):
                     lose += 1
                     print(
                         f"{Fore.RED}[-] {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Battle Lose | Odds:{str(round(win / (win + lose), 3) * 100)[:4]:4}% Opponent: {res['init']['players']['right']['name']} Team: {avatars_battle}")
-                time.sleep(12)
+                time.sleep(7)
             except Exception as e:
                 print(res)
                 exit()
 
 
 if __name__ == '__main__':
-    print(f"{Fore.GREEN}***** StarryNift Auto Battle by @19 From STARS GUILD 繁星公会 *****\n")
-    battle_count = int(input("出战人数(1-4): "))
+    print(f"{Fore.YELLOW}*****\nStarryNift Auto Battle\nBy @19 From STARS GUILD 繁星公会\n*****\n\n")
+    battle_count = int(input(f"{Fore.GREEN}[?] 出战人数(1-4): "))
     if battle_count not in [1, 2, 3, 4]:
         exit()
-    is_wear = input("是否穿戴装备(0不穿，其他穿): ")
-    is_unlimit = input("没有卡之后是否循环等待新的卡尝试对战(0不循环，其他循环): ")
+    is_wear = input(f"{Fore.GREEN}[?] 是否穿戴装备(0不穿，其他穿): ")
+    is_unlimit = input(f"{Fore.GREEN}[?] 没有卡之后是否循环等待新的卡尝试对战(0不循环，其他循环): ")
     with open("./account.txt") as f:
         content = f.readlines()
     accounts = []
@@ -248,7 +252,7 @@ if __name__ == '__main__':
     for account in accounts:
         address = account[0]
         private_key = account[1]
-        print(f"{Fore.GREEN}[+] current address: {address}")
+        print(f"{Fore.GREEN}[+] Current Address: {address}")
         auth = do_sign(address, private_key)  # 获取签名token
         global_headers = {
             'Host': 'app.starrynift.art',
@@ -274,6 +278,7 @@ if __name__ == '__main__':
 
         win = 0
         lose = 0
+        team_serial = 0
 
         while True:
             battle_teams = []
@@ -293,6 +298,9 @@ if __name__ == '__main__':
                 if len(battle_teams) == battle_count:
                     break
             if battle_teams:
+                team_serial += 1
+                print(
+                    f"\n{Fore.YELLOW}[+] {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Team serial: {team_serial}")
                 battle_create(battle_teams, items, min_times)
             if not len(avatars):
                 if win + lose > 0:
@@ -310,4 +318,4 @@ if __name__ == '__main__':
                     break
             print(
                 f"{Fore.YELLOW}[-] {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} One team battle done. Have a rest for 10 seconds.")
-            time.sleep(12)
+            time.sleep(10)
