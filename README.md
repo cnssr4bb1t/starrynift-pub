@@ -8,10 +8,13 @@ StarryNift 自动对战刷经验辅助工具，解放你的时间。
 
 >**购买自动占地脚本，联系wx: kylin_turing**
 
+----
 #### Update 20220224
 修改nft出战逻辑为：始终保持用1个最高质量的可用nft搭配其他质量最低的可用nft，也就是在出战4个nft的情况下，1带3。
 
 1带3策略在测试中，胜率提升巨大，我自己的号胜率稳定在75%-80%之间。
+
+----
 
 #### 需要注意的事情
 1. 不要开全局代理/系统VPN，会报错闪退。
@@ -89,6 +92,7 @@ python3 auto_battle.py -n 4
 
 ![image](https://user-images.githubusercontent.com/5326766/149612989-688abc78-afa2-442c-bd2b-09135b7eab27.png)
 
+----
 
 ## Windows10 / 11（Windows7不支持）
 > exe 根据 auto_battle_for_windows.py 用 pyinstaller 打包的，同样开源。
