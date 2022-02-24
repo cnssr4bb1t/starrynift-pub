@@ -289,7 +289,6 @@ if __name__ == '__main__':
             'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-TW;q=0.6',
             'Cookie': '_ga=GA1.1.2137279765.1638733403; __cf_bm=BXqcDSHyJQTLrLhPfv344PiDrn6wY0Z1_UwKEVod2g0-1639988756-0-AVkJROGWYN5JrS/EUe6+6ossza79TcvLywcF1dP+jrODWKnu00M+lEiIyDyt394XPUPPqe6q7gSfKOpciOa4fFiGYWlkOeVAg7LNYchWduxgbYP2Areo4vg3GQWQ/+kvGg==; _ga_B8C5YL5B0B=GS1.1.1639988598.217.1.1639988796.0'
         }
-
         win = 0
         lose = 0
         team_serial = 0
