@@ -260,8 +260,10 @@ if __name__ == '__main__':
                         num += 1
             except IndexError:
                 print(f"{STATUS_COLOR['WARNING']}[-] {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} No nft remains.{STATUS_COLOR['RESET']}")
+                num = 0
                 break
             if len(battle_teams) == battle_count:
+                num = 0
                 break
         if battle_teams:
             team_serial += 1
