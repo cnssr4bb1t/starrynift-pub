@@ -34,7 +34,7 @@ def battle_prepare():
             items.append(info)
         else:
             pass
-    avatars.sort()              # 排序，质量高的放后面，方便pop()
+    avatars.sort(reverse=True)  # 排序，质量高的放前面
     items.sort(reverse=True)    # 排序，质量高的放前面
     items1 = list()
     items2 = list()
@@ -91,7 +91,7 @@ def battle_create(avatars_battle, items_battle, times):
             structured = {
                 "avatar": {
                     "source": 1,
-                    "id": str(avatars_battle[i])
+                    "id": str(avatars_battle[i][0])
                 },
                 "items": [
                     {
@@ -132,7 +132,7 @@ def battle_create(avatars_battle, items_battle, times):
             structured = {
                 "avatar": {
                     "source": 1,
-                    "id": str(avatars_battle[i])
+                    "id": str(avatars_battle[i][0])
                 },
                 "items": []
             }
@@ -162,13 +162,27 @@ def battle_create(avatars_battle, items_battle, times):
                 exit()
         else:
             try:
+                token_ids = []
+                quality = []
+                q = {
+                    7: "SPR",
+                    6: "UR",
+                    5: "SSR",
+                    4: "SR",
+                    3: "R",
+                    2: "N",
+                    1: "L"
+                }
+                for avatar_meta in avatars_battle:
+                    token_ids.append(avatar_meta[0])
+                    quality.append(q[avatar_meta[1]])
                 if res["evaluation"]["winner"] == res["side"]:
                     win += 1
-                    print(f"{STATUS_COLOR['OK']}[+] {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Battle Win  | Odds:{str(round(win/(win+lose), 3)*100)[:4]:4}% Opponent: {res['init']['players']['right']['name']} Team: {avatars_battle}{STATUS_COLOR['RESET']}")
+                    print(f"{STATUS_COLOR['OK']}[+] {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Battle Win  | Odds:{str(round(win/(win+lose), 3)*100)[:4]:4}% Team: {token_ids} Rare: {quality}{STATUS_COLOR['RESET']}")
                 else:
                     lose += 1
-                    print(f"{STATUS_COLOR['FAIL']}[-] {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Battle Lose | Odds:{str(round(win/(win+lose), 3)*100)[:4]:4}% Opponent: {res['init']['players']['right']['name']} Team: {avatars_battle}{STATUS_COLOR['RESET']}")
-                time.sleep(12)
+                    print(f"{STATUS_COLOR['FAIL']}[-] {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Battle Lose | Odds:{str(round(win/(win+lose), 3)*100)[:4]:4}% Team: {token_ids} Rare: {quality}{STATUS_COLOR['RESET']}")
+                time.sleep(7)
             except Exception as e:
                 print(res, e)
                 exit()
@@ -221,6 +235,7 @@ if __name__ == '__main__':
     battle_count = int(args.number)
 
     team_serial = 0
+    num = 0
     while True:
         avatars, items = battle_prepare()
         print(
@@ -229,11 +244,20 @@ if __name__ == '__main__':
         min_times = float("inf")  # 无穷大
         while True:
             try:
-                avatar = avatars.pop()
-                if avatar[5] < 5:
-                    battle_teams.append(avatar[2])
-                    if 5-avatar[5] < min_times:
-                        min_times = 5-avatar[5]
+                if num == 0:
+                    avatar = avatars.pop(0)
+                    if avatar[5] < 5:
+                        battle_teams.append([avatar[2], avatar[0]])
+                        if 5-avatar[5] < min_times:
+                            min_times = 5-avatar[5]
+                        num += 1
+                else:
+                    avatar = avatars.pop(-1)
+                    if avatar[5] < 5:
+                        battle_teams.append([avatar[2], avatar[0]])
+                        if 5-avatar[5] < min_times:
+                            min_times = 5-avatar[5]
+                        num += 1
             except IndexError:
                 print(f"{STATUS_COLOR['WARNING']}[-] {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} No nft remains.{STATUS_COLOR['RESET']}")
                 break
