@@ -258,6 +258,9 @@ if __name__ == '__main__':
         exit()
     is_wear = input(f"{Fore.GREEN}[?] 是否穿戴装备(0不穿，其他穿): ")
     is_unlimit = input(f"{Fore.GREEN}[?] 没有卡之后是否循环等待新的卡尝试对战(0不循环，其他循环): ")
+    top = int(input(f"{Fore.GREEN}[?] 出站几张高质量卡(1-4，不要高于出战人数，否则直接退出): "))
+    if top > battle_count:
+        exit()
     with open("./account.txt") as f:
         content = f.readlines()
     accounts = []
@@ -300,7 +303,7 @@ if __name__ == '__main__':
             min_times = float("inf")  # 无穷大
             while True:
                 try:
-                    if num == 0:
+                    if num < top:
                         avatar = avatars.pop(0)
                         if avatar[5] < 5:
                             battle_teams.append([avatar[2], avatar[0]])
@@ -316,8 +319,10 @@ if __name__ == '__main__':
                             num += 1
                 except IndexError:
                     print(f"{Fore.YELLOW}[-] {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} No nft remains.")
+                    num = 0
                     break
                 if len(battle_teams) == battle_count:
+                    num = 0
                     break
             if battle_teams:
                 team_serial += 1

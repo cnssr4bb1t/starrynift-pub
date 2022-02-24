@@ -192,10 +192,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='StarryNift Auto Battle.')
     parser.add_argument('-u', '--user', default='account_1', help='current user for bot')
     parser.add_argument('-w', '--wear', default='1', help='wear items or not')
-    parser.add_argument('-n', '--number', default=2, help='battle avater amount')
+    parser.add_argument('-n', '--number', default=4, help='battle avater amount')
+    parser.add_argument('-t', '--top', default=1, help='how many high quality nft battle once time')
     args = parser.parse_args()
     current_user = args.user
     is_wear = args.wear
+    top = int(args.top)
     try:
         address = ACCOUNTS[current_user]['address']
         private_key = ACCOUNTS[current_user]['private_key']
@@ -244,7 +246,7 @@ if __name__ == '__main__':
         min_times = float("inf")  # 无穷大
         while True:
             try:
-                if num == 0:
+                if num < top:
                     avatar = avatars.pop(0)
                     if avatar[5] < 5:
                         battle_teams.append([avatar[2], avatar[0]])
